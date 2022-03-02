@@ -12,19 +12,20 @@ const GoogleAuth = ({ dispatch, isSignedIn, userId }) => {
         const params = { 
             clientId: "211423637800-fv03d541uap1hqpggjkf65co4u5kmp3o.apps.googleusercontent.com",
             scope: "email",
-            
-            
         };
         
+
+       function loading(){
         window.gapi.load("client:auth2", ()=>{
             window.gapi.client.init(params).then(()=>{
                 setAuth(window.gapi.auth2.getAuthInstance());
                 onAuthChange(window.gapi.auth2.getAuthInstance().isSignedIn.get());
                 window.gapi.auth2.getAuthInstance().isSignedIn.listen(onAuthChange);
-                
             });
         });
-
+        
+       }
+       loading();
     }, []);
 
     
@@ -34,7 +35,8 @@ const GoogleAuth = ({ dispatch, isSignedIn, userId }) => {
             
             dispatch(
                 AuthorizationAction.signIn(                    
-                    window.gapi.auth2.getAuthInstance().currentUser.get().getId())
+                    window.gapi.auth2.getAuthInstance().currentUser.get().getId()),
+                   setUser(window.gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile().getName())
             );
         }else{
             dispatch(AuthorizationAction.signOut());
@@ -56,7 +58,7 @@ const GoogleAuth = ({ dispatch, isSignedIn, userId }) => {
         }else if (isSignedIn ){
             return(
                 <div>
-                    <span className="streamer-1">{userId}</span>
+                    <span className="streamer-1">{user}</span>
                     <button className="sign-in" onClick={onSignOutClick}>Sign out</button>
                 </div>
             );

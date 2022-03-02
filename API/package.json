@@ -5,8 +5,14 @@
   "main": "index.js",
   "scripts": {
     "start": "json-server --watch db.json --port 3001 && live-server ",
-    "port": "3001"
+    "port": "3001",
+    "build:all": "npm run build && npm run build:debug && npm run build:profiler && npm run build:min"
+
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3",
+    "flv.js": "^1.6.2"
+  }
 }

@@ -7,12 +7,12 @@ const StreamList = () =>{
 
     const [streams, setStreams] = useState([]);
 
-    /* useEffect(() => {
+     useEffect(() => {
         list("", data =>{
             setStreams([...streams, data]);
         });
         console.log(streams);
-    }, []); */
+    }, []); 
     
     
     
@@ -20,7 +20,7 @@ const StreamList = () =>{
 
     return(
         <div className="stream-list">
-                <span></span>
+              
         </div>
     )
 }
