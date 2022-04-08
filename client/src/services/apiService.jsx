@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+
 const apiUrl = "http://localhost:3001/streams";
 
 const headers = {
@@ -7,49 +8,61 @@ const headers = {
     'Accept': 'application/json'
 }
 
-const insert = (path, data, callback) => {
-    axios.post(`${apiUrl}/${path}`, data, {headers} )
-    .then(response => callback(response.data))
-    .catch(reason => {
-        console.log(reason);
-        callback(false);
-    });
-};
 
-const list = (path, callback) => {
-    axios.get(`${apiUrl}/${path}`, {headers} )
-    .then(response => callback(response.data))
-    .catch(reason => {
-        console.log(reason);
-        callback(false);
-    });
-};
+export const insertStream = (values) => async (dispatch) => {
+    try {
+      const res = await axios.post(`${apiUrl}`, values, { headers });
+      dispatch({
+        type: "INSERT_STREAM",
+        payload: res.data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
-const read = (path, id, callback) => {
-    axios.get(`${apiUrl}/${path}/${id}`, {headers} )
-    .then(response => callback(response.data))
-    .catch(reason => {
-        console.log(reason);
-        callback(false);
-    });
-};
+  export const listStreams = () => async (dispatch) => {
+      try {
+          const res = await axios.get(`${apiUrl}`, {headers})
+          dispatch({
+              type: "LIST_STREAMS",
+              payload: res.data,
+          });
+      }catch (err) {
+          console.log(err);
+      }
+  };
 
-const update = (path, id, data, callback) => {
-    axios.put(`${apiUrl}/${path}/${id}`, data, {headers} )
-    .then(response => callback(response.data))
-    .catch(reason => {
-        console.log(reason);
-        callback(false);
-    });
+  export const getStream = (id) => async (dispatch) => {
+    try {
+        const res = await axios.get(`${apiUrl}/${id}`, {headers})
+        dispatch({
+            type: "READ_STREAM",
+            payload: res.data,
+        });
+    }catch (err) {
+        console.log(err);
+    }
 };
-
-const remove = (path, id, callback) => {
-    axios.delete(`${apiUrl}/${path}/${id}`, {headers} )
-    .then(response => callback(response.data))
-    .catch(reason => {
-        console.log(reason);
-        callback(false);
-    });
+export const deleteStream = (id) => async (dispatch) => {
+    try {
+        const res = await axios.delete(`${apiUrl}/${id}`, {headers})
+        dispatch({
+            type: "DELETE_STREAM",
+            payload: res.data,
+        });
+    }catch (err) {
+        console.log(err);
+    }
 };
-
-export { insert, list, read, update, remove };
+export const editStream = (id, values) => async (dispatch) => {
+    try {
+        const res = await axios.put(`${apiUrl}/${id}`,values, {headers})
+        dispatch({
+            type: "EDIT_STREAM",
+            payload: res.data,
+        });
+    }catch (err) {
+        console.log(err);
+    }
+};

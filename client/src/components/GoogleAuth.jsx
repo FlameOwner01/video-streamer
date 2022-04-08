@@ -13,19 +13,19 @@ const GoogleAuth = ({ dispatch, isSignedIn, userId }) => {
             clientId: "211423637800-fv03d541uap1hqpggjkf65co4u5kmp3o.apps.googleusercontent.com",
             scope: "email",
         };
-        
 
-       function loading(){
-        window.gapi.load("client:auth2", ()=>{
-            window.gapi.client.init(params).then(()=>{
-                setAuth(window.gapi.auth2.getAuthInstance());
-                onAuthChange(window.gapi.auth2.getAuthInstance().isSignedIn.get());
-                window.gapi.auth2.getAuthInstance().isSignedIn.listen(onAuthChange);
-            });
+        const timer = setTimeout(() => {
+            window.gapi.load("client:auth2", ()=>{
+                window.gapi.client.init(params).then(()=>{
+                    setAuth(window.gapi.auth2.getAuthInstance());
+                    onAuthChange(window.gapi.auth2.getAuthInstance().isSignedIn.get());
+                    window.gapi.auth2.getAuthInstance().isSignedIn.listen(onAuthChange);
+                });
+          }, 2000);
+         
+          return () => clearTimeout(timer);
         });
-        
-       }
-       loading();
+      
     }, []);
 
     
@@ -59,7 +59,7 @@ const GoogleAuth = ({ dispatch, isSignedIn, userId }) => {
             return(
                 <div>
                     <span className="streamer-1">{user}</span>
-                    <button className="sign-in" onClick={onSignOutClick}>Sign out</button>
+                    <button className="sign-out" onClick={onSignOutClick}>Sign out</button>
                 </div>
             );
         }else {

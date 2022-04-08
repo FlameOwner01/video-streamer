@@ -1,5 +1,22 @@
 {
-    "streams" : {
-        "streamId" :  1, "title" : "myStream" 
+  "streams": [
+    {
+      "id": "1",
+      "title": "First Stream",
+      "description": "Short description of the first stream",
+      "userId": "1"
+    },
+    {
+      "id": "2",
+      "title": "Second Stream",
+      "description": "Short description of the second stream",
+      "userId": "1"
+    },
+    {
+      "title": "ZedMaster",
+      "description": "An assassinating good stream",
+      "userId": "117361417989088584619",
+      "id": "6xt7dnW"
     }
+  ]
 }

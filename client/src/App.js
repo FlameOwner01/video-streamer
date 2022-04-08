@@ -1,10 +1,16 @@
 import React from 'react';
-import Header from './components/Header';
+import Headers from './components/Headers';
 import "./styles/style.css";
+import MainRouter from './MainRouter';
+import { BrowserRouter } from 'react-router-dom';
 
 const  App = ()  => {
   return (
-      <Header/> 
+      <BrowserRouter>
+       <Headers/>
+      <MainRouter/>
+      </BrowserRouter>    
+       
   );
 }
 
