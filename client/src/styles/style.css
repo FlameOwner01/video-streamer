@@ -38,11 +38,12 @@ li{
 	animation: gradient 15s ease infinite;
 }
 .player{
-    margin-left: 20%;
+    margin-left: 25%;
     margin-top: 5px;
 }
 .video-player{
     height: 80%;
+    width: 90%;
 }
 
 .container{
@@ -99,7 +100,9 @@ input{
     padding: 10px;
     margin-left: 10px !important;
 }
-
+div.player{
+    margin-bottom: 100px !important;
+}
 @keyframes gradient {
 	0% {
 		background-position: 0% 50%;
