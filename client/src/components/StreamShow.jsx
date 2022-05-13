@@ -1,5 +1,5 @@
 import { ReactFlvPlayer } from 'react-flv-player'
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getStream } from '../services/apiService';
 import { useParams } from 'react-router-dom';
@@ -16,12 +16,6 @@ const StreamShow = () => {
       dispatch(getStream(id));
    }, [id, dispatch]);
    
-
-   
-
-    const title = useSelector(state => state.data.title);
-    const description = useSelector(state => state.data.description);
-
     return (
         <Container className='container-2 player'>
             <div className='player'> 

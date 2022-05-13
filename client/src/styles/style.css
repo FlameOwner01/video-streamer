@@ -9,7 +9,7 @@ body{
     
 }
 .list-container{
-    overflow: visible;
+    overflow: scroll;
 }
 html{
     background: linear-gradient(-45deg, #7eee52, #3c47e7, #d52323, #fcfcfc);
@@ -45,14 +45,17 @@ li{
     height: 80%;
     width: 90%;
 }
-
+.ui.container{
+    overflow: scroll !important;
+}
 .container{
     margin-top: 0px;
-    height: 30%;
+    height: 40%;
     width: 100%;
     border: 2px solid black;
     position: fixed;
     background-color: rgb(221, 220, 220);
+    
 }
 .bg{    
     background: linear-gradient(-45deg, #7eee52, #3c47e7, #d52323, #fcfcfc);
@@ -228,7 +231,7 @@ div.player{
     }
     .ui.container{
         width: 100% !important;
-        height: 100% !important;
+        height: 67% !important;
         top: 33%;
     }
     .title-btn{
@@ -373,9 +376,13 @@ div.ui{
 .div.ui.container.list-container{
     margin-bottom: 10px;
     left: -10px !important;
+    height: 100% ;
 }
 .ui.container{
+    max-width: unset;
     width: 100%;
+    min-width: unset;
+    max-height: unset;
 }
 .ui.header:first-child{
     margin-left: 40px;
@@ -402,10 +409,9 @@ a.ui.primary.button{
 }
 
 .list-container{
-    bottom: 10%;
     top: 33%;
     width: 100%;
-    display: block;
+    display: inline-block;
     background: linear-gradient(-45deg, #7eee52, #3c47e7, #d52323, #fcfcfc);
 	background-size: 400% 400%;
 	animation: gradient 15s ease infinite;
@@ -430,3 +436,6 @@ a.ui.primary.button{
   ::-webkit-scrollbar-thumb:hover {
     background: #555;
   }
+.wrapper{
+    height: unset;
+}
